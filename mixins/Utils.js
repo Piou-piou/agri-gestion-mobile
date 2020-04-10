@@ -42,7 +42,7 @@ export default {
      */
     getApi() {
       if (this.api === undefined) {
-        this.api = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/api/', 'cors');
+        this.api = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/api/', 'external');
       }
 
       return this.api;
