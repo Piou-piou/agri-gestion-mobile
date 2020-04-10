@@ -5,49 +5,47 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Agri gestion',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'PWA for agri gestion software' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
+
   loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
+
   css: [
+    'ribs-popup/dist/css/style.min.css',
+    'ribs-flash-message/dist/css/style.css',
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
+
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module'
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
   modules: [
+    '@nuxtjs/pwa',
+    '@nuxtjs/icon',
+    '@nuxtjs/manifest'
   ],
-  /*
-  ** Build configuration
-  */
+
+  manifest: {
+    name: 'Agri gestion',
+    short_name: "A-gestion",
+    description: "Gérez vos parcelles, quand vous y mettez vos vaches, quand vous les sortez, etc.",
+    start_url: '/login',
+    display: "standalone",
+    orientation: 'portrait-primary',
+    theme_color: '#007bff',
+    lang: 'fr'
+  },
+
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     extend (config, ctx) {
     }
   }
