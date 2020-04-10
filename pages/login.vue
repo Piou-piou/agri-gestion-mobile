@@ -44,7 +44,7 @@
        */
       submit() {
         return this.getApi().post('users/authenticate', {
-          'pseudo': this.pseudo,
+          'username': this.pseudo,
           'password': this.password
         })
         .then((data) => {
