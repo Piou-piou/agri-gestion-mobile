@@ -33,6 +33,7 @@
   import Utils from '~/mixins/Utils';
 
   export default {
+    layout: 'login',
     mixins: [Utils],
     data() {
       return {
