@@ -14,6 +14,12 @@
     created() {
       this.testAndUpdateToken();
       //this.testUpdateAppVersion();
+
+      if (process.client) {
+        this.getApi().post('parcels/list').then(data => {
+          console.log(data);
+        })
+      }
     }
   }
 </script>

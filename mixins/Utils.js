@@ -42,10 +42,22 @@ export default {
      */
     getApi() {
       if (this.api === undefined) {
-        this.api = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/api/', 'external');
+        this.api = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/agri-gestion/api/', 'external');
       }
 
       return this.api;
+    },
+
+    /**
+     * method to get ribs admin api
+     * @returns {RibsApi}
+     */
+    getRibsAdminApi() {
+      if (this.ribsAdminApi === undefined) {
+        this.ribsAdminApi = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/api/', 'external');
+      }
+
+      return this.ribsAdminApi;
     },
 
     /**
@@ -141,7 +153,7 @@ export default {
 
         const context = this;
 
-        this.getApi().post('users/test-token', {'infos': jwtInfos, 'token': this.getToken()}).then((data) => {
+        this.getRibsAdminApi().post('users/test-token', {'infos': jwtInfos, 'token': this.getToken()}).then((data) => {
           if (data.success === true) {
             this.setToken(data.token);
 

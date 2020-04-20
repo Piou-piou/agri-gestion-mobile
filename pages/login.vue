@@ -48,7 +48,7 @@
        * @returns {Q.Promise<unknown>}
        */
       submit() {
-        return this.getApi().post('users/authenticate', {
+        return this.getRibsAdminApi().post('users/authenticate', {
           'username': this.pseudo,
           'password': this.password
         })
