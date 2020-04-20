@@ -1,25 +1,29 @@
 <template>
-    <div id="login">
+    <div class="login">
         <div  v-bind:class="{active: loading}">
-            <div  class="loading">
+            <div class="loading">
                 Chargement...
             </div>
         </div>
 
-        <div v-bind:class="{active: !loading}" id="login-form">
-            <form action="">
-                <h1>Agri Gestion</h1>
-                <h2>Connexion</h2>
+        <div v-bind:class="{active: !loading, 'login-form': !loading}" id="login-form">
+            <form action="" class="ribs-form">
+                <img src="~/assets/images/ribs.png" alt="">
+                <h1 class="mb2">Agri gestion</h1>
 
-                <div class="block">
-                    <label>Pseudo</label>
-                    <input type="text" name="pseudo" v-model="pseudo">
+                <div class="ribs-container-fluid">
+                    <div class="form-group">
+                        <label>Pseudo</label>
+                        <input type="text" name="pseudo" class="form-control" v-model="pseudo">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" name="password" class="form-control" v-model="password">
+                    </div>
+
+                    <button type="submit" class="ribs-button" v-on:click.stop.prevent="submit">Connexion</button>
                 </div>
-                <div class="block">
-                    <label>Mot de passe</label>
-                    <input type="password" name="password" v-model="password">
-                </div>
-                <button type="submit" v-on:click.stop.prevent="submit">Connexion</button>
             </form>
         </div>
     </div>

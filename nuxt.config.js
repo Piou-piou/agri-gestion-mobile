@@ -19,6 +19,7 @@ export default {
   loading: { color: '#fff' },
 
   css: [
+    'ribs-admin-bundle-templates/dist/css/mobile.min.css',
     'ribs-popup/dist/css/style.min.css',
     'ribs-flash-message/dist/css/style.css',
   ],
