@@ -59,6 +59,9 @@
       }
     },
     methods: {
+      /**
+       * @returns {Q.Promise<unknown>|boolean}
+       */
       submit() {
         if (!this.cowsNumber || !this.startDate) {
           this.getFlash().append('Vous devez spécifiez un date de début et le nombre de vaches', 'error');

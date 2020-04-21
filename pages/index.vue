@@ -37,7 +37,6 @@
     mixins: [Utils],
     methods: {
       /**
-       *
        * @param id
        */
       exitCowsOfParcel(id) {
