@@ -20,7 +20,7 @@
     "luxon": "^1.23.0",
     "node-fetch": "^2.6.0",
     "nuxt": "^2.0.0",
-    "ribs-admin-bundle-templates": "^1.0.16",
+    "ribs-admin-bundle-templates": "^1.0.17",
     "ribs-api": "^1.0.7",
     "ribs-core": "^0.0.9-4",
     "ribs-flash-message": "^1.2.7",
