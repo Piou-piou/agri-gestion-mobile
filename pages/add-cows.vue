@@ -63,8 +63,8 @@
        * @returns {Q.Promise<unknown>|boolean}
        */
       submit() {
-        if (!this.cowsNumber || !this.startDate) {
-          this.getFlash().append('Vous devez spécifiez un date de début et le nombre de vaches', 'error');
+        if (!this.cowsNumber || !this.startDate || !this.parcel) {
+          this.getFlash().append('Vous devez spécifiez un date de début, le nombre de vaches et une parcelle', 'error');
           return false;
         }
 
@@ -73,7 +73,7 @@
             'cows_number': this.cowsNumber,
             'start_date': this.startDate,
             'end_date': this.endDate,
-            'parcel_id': 1
+            'parcel_id': this.parcel
           }),
           token: this.getToken()
         })
