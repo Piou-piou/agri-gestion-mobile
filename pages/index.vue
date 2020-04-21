@@ -15,7 +15,7 @@
             </div>
           </div>
           <footer>
-            <button class="ribs-button">Sortir les vaches</button>
+            <button class="ribs-button" @click="exitCowsOfParcel(cowInParcel.id)">Sortir les vaches</button>
           </footer>
         </div>
       </div>
@@ -35,6 +35,26 @@
       }
     },
     mixins: [Utils],
+    methods: {
+      /**
+       *
+       * @param id
+       */
+      exitCowsOfParcel(id) {
+        this.getApi().post('cows/exit', {
+          infos: this.getJwtValues({id: id}),
+          token: this.getToken()
+        }).then(data => {
+          this.updateTokenIfExist(data.token);
+          if (data.success) {
+            this.getFlash().append(data.success_message, 'success');
+            this.cowsInParcel = data.cows_in_parcel;
+          } else {
+            this.getFlash().append(data.error_message, 'error');
+          }
+        });
+      }
+    },
     created() {
       this.testAndUpdateToken();
       //this.testUpdateAppVersion();
