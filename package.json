@@ -17,13 +17,16 @@
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "form-data": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
+    "luxon": "^1.23.0",
     "node-fetch": "^2.6.0",
     "nuxt": "^2.0.0",
     "ribs-admin-bundle-templates": "^1.0.16",
     "ribs-api": "^1.0.7",
     "ribs-core": "^0.0.9-4",
     "ribs-flash-message": "^1.2.7",
-    "ribs-popup": "^1.1.5"
+    "ribs-popup": "^1.1.5",
+    "vue-datetime": "^1.0.0-beta.11",
+    "weekstart": "^1.0.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^2.0.0",

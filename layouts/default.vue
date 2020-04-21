@@ -9,7 +9,7 @@
     <footer class="main ribs-container-fluid">
       <nav>
         <ul class="row middle-xs">
-          <li class="cxs"><a class="row center-xs" href="#"><i class="fas fa-plus"></i></a></li>
+          <li class="cxs"><nuxt-link class="row center-xs" to="/add-cows"><i class="fas fa-plus"></i></nuxt-link></li>
         </ul>
       </nav>
     </footer>

@@ -22,6 +22,7 @@ export default {
     'ribs-admin-bundle-templates/dist/css/mobile.min.css',
     'ribs-popup/dist/css/style.min.css',
     'ribs-flash-message/dist/css/style.css',
+    'vue-datetime/dist/vue-datetime.css'
   ],
 
   buildModules: [
@@ -33,6 +34,10 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/icon',
     '@nuxtjs/manifest'
+  ],
+
+  plugins: [
+    { src: '~/plugins/vue-datepicker', ssr: false }
   ],
 
   manifest: {
