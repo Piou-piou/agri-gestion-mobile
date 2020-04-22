@@ -10,7 +10,7 @@
                         <div class="row">
                             <ul class="cxs-12">
                                 <li>Surface : {{parcel.surface}} hectares</li>
-                                <li>Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}} hectares</li>
+                                <li>Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}}</li>
                             </ul>
                         </div>
                     </div>
