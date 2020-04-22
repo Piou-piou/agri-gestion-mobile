@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import RibsApi from 'ribs-api';
 import ribsFlash from 'ribs-flash-message';
+import infos from '~/assets/infos.json';
 
 export default {
   methods: {
@@ -120,7 +121,7 @@ export default {
      */
     testUpdateAppVersion() {
       if (process.client) {
-        const appVersion = '1.0.0';
+        const appVersion = this.getInfos().app_version;
         const actualVersion = this.getActualVersion();
         console.log(appVersion);
         console.log(actualVersion);
@@ -129,6 +130,13 @@ export default {
           window.location.reload();
         }
       }
+    },
+
+    /**
+     * method to get json of config and vars
+     */
+    getInfos() {
+      return infos;
     },
 
     /**

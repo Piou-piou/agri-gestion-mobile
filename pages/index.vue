@@ -56,7 +56,7 @@
     },
     created() {
       this.testAndUpdateToken();
-      //this.testUpdateAppVersion();
+      this.testUpdateAppVersion();
 
       if (process.client) {
         this.getApi().post('cows/list', {
