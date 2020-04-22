@@ -21,13 +21,13 @@
                         <div class="row">
                             <div class="form-group cxs-12">
                                 <label>Date d'entrée dans la parcelle</label>
-                                <datetime v-model="startDate" format="dd/MM/yyyy" input-class="form-control"></datetime>
+                                <datetime v-model="startDate" format="dd/MM/yyyy" input-class="form-control" class="theme-blue" :phrases="{ok: 'Valider', cancel: 'Annuler'}"></datetime>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group cxs-12">
                                 <label>Date de sortie dans la parcelle</label>
-                                <datetime v-model="endDate" input-class="form-control"></datetime>
+                                <datetime v-model="endDate" input-class="form-control" class="theme-blue" :phrases="{ok: 'Valider', cancel: 'Annuler'}"></datetime>
                             </div>
                         </div>
                         <div class="row">

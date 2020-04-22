@@ -22,7 +22,8 @@ export default {
     'ribs-admin-bundle-templates/dist/css/mobile.min.css',
     'ribs-popup/dist/css/style.min.css',
     'ribs-flash-message/dist/css/style.css',
-    'vue-datetime/dist/vue-datetime.css'
+    'vue-datetime/dist/vue-datetime.css',
+    '~/assets/scss/style.scss'
   ],
 
   buildModules: [
