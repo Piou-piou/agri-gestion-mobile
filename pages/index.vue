@@ -1,28 +1,29 @@
 <template>
-  <main class="ribs-container-fluid">
-    <div class="row" v-for="cowInParcel in cowsInParcel" :key="cowInParcel.id">
-      <div class="cxs-12">
-        <div class="block">
-          <header>
-            <h5>Parcelle {{cowInParcel.parcel.name}}</h5>
-          </header>
-          <div class="content">
-            <div class="row">
-              <ul class="cxs-12">
-                <li>Nombre de vaches : {{cowInParcel.cow_number}}</li>
-                <li>Entrées dans la parcelle le : {{cowInParcel.formattedStartDate}}</li>
-              </ul>
+  <div>
+    <main class="ribs-container-fluid">
+      <div class="row" v-for="cowInParcel in cowsInParcel" :key="cowInParcel.id">
+        <div class="cxs-12">
+          <div class="block">
+            <header>
+              <h5>Parcelle {{cowInParcel.parcel.name}}</h5>
+            </header>
+            <div class="content">
+              <div class="row">
+                <ul class="cxs-12">
+                  <li>Nombre de vaches : {{cowInParcel.cow_number}}</li>
+                  <li>Entrées dans la parcelle le : {{cowInParcel.formattedStartDate}}</li>
+                </ul>
+              </div>
             </div>
+            <footer>
+              <button class="ribs-button" @click="exitCowsOfParcel(cowInParcel.id)">Sortir les vaches</button>
+            </footer>
           </div>
-          <footer>
-            <button class="ribs-button" @click="exitCowsOfParcel(cowInParcel.id)">Sortir les vaches</button>
-          </footer>
         </div>
       </div>
-    </div>
-
-    <div id="game-version">V {{ actualVersion }}</div>
-  </main>
+    </main>
+    <div id="app-version">V {{ actualVersion }}</div>
+  </div>
 </template>
 
 <script>
