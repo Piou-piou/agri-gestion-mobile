@@ -7,7 +7,7 @@
                         <div class="row">
                             <div class="form-group cxs-12">
                                 <label>Nombre de vaches</label>
-                                <input type="number" name="cows_number" class="form-control" v-model="cowsNumber">
+                                <input type="number" pattern="[0-9]*" name="cows_number" class="form-control" v-model="cowsNumber">
                             </div>
                         </div>
                         <div class="row">
