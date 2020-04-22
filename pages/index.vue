@@ -20,6 +20,8 @@
         </div>
       </div>
     </div>
+
+    <div id="game-version">V {{ actualVersion }}</div>
   </main>
 </template>
 
@@ -31,6 +33,7 @@
     },
     data() {
       return {
+        actualVersion: null,
         cowsInParcel: null
       }
     },
@@ -59,6 +62,8 @@
       this.testUpdateAppVersion();
 
       if (process.client) {
+        this.actualVersion = this.getActualVersion();
+
         this.getApi().post('cows/list', {
           infos: this.getJwtValues(),
           token: this.getToken()
