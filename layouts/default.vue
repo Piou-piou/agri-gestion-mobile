@@ -10,6 +10,7 @@
       <nav>
         <ul class="row middle-xs">
           <li class="cxs"><nuxt-link class="row center-xs" to="/add-cows"><i class="fas fa-plus fa-2x"></i></nuxt-link></li>
+          <li class="cxs"><nuxt-link class="row center-xs" to="/parcel-list"><i class="fas fa-map-marked fa-2x"></i></nuxt-link></li>
         </ul>
       </nav>
     </footer>
