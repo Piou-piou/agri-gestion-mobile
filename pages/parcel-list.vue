@@ -10,13 +10,11 @@
                         <div class="row">
                             <ul class="cxs-12">
                                 <li>Surface : {{parcel.surface}} hectares</li>
-                                <li>Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}}</li>
+                                <li v-if="parcel.formattedLastDateWithCows">Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}}</li>
+                                <li v-else>Vaches dans la parcelle : {{parcel.cowsNumber}}</li>
                             </ul>
                         </div>
                     </div>
-                    <footer>
-                        <button class="ribs-button" >Modifier</button>
-                    </footer>
                 </div>
             </div>
         </div>
