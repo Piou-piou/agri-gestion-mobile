@@ -15,8 +15,8 @@
                                 <label>Parcelle</label>
                                 <select v-model="parcel" class="form-control">
                                     <option v-for="parcel in parcels" :key="parcel.id" v-bind:value="parcel.id">{{parcel.name}}
-                                        <span v-if="parcel.formattedLastDateWithCows">(pas de vaches depuis : {{parcel.formattedLastDateWithCows}})</span>
-                                        <span v-else>(Vaches dans parcelle)</span>
+                                        <span v-if="parcel.formattedLastDateWithCows">(pas vch. dep. : {{parcel.formattedLastDateWithCows}})</span>
+                                        <span v-else>(parc. act.)</span>
                                     </option>
                                 </select>
                             </div>
