@@ -14,7 +14,10 @@
                             <div class="form-group cxs-12">
                                 <label>Parcelle</label>
                                 <select v-model="parcel" class="form-control">
-                                    <option v-for="parcel in parcels" :key="parcel.id" v-bind:value="parcel.id">{{parcel.name}}</option>
+                                    <option v-for="parcel in parcels" :key="parcel.id" v-bind:value="parcel.id">{{parcel.name}}
+                                        <span v-if="parcel.formattedLastDateWithCows">(pas de vaches depuis : {{parcel.formattedLastDateWithCows}})</span>
+                                        <span v-else>(Vaches dans parcelle)</span>
+                                    </option>
                                 </select>
                             </div>
                         </div>
