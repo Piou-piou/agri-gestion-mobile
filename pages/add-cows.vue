@@ -23,6 +23,14 @@
                         </div>
                         <div class="row">
                             <div class="form-group cxs-12">
+                                <label>Type de vaches</label>
+                                <select v-model="type" class="form-control">
+                                    <option v-for="(type, index) in types" :key="type" v-bind:value="index">{{type}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group cxs-12">
                                 <label>Date d'entrée dans la parcelle</label>
                                 <datetime v-model="startDate" format="dd/MM/yyyy" input-class="form-control" class="theme-blue" :phrases="{ok: 'Valider', cancel: 'Annuler'}"></datetime>
                             </div>
@@ -56,6 +64,8 @@
       return {
         parcel: null,
         parcels: null,
+        types: null,
+        type: null,
         cowsNumber: null,
         startDate: null,
         endDate: null,
@@ -66,8 +76,25 @@
        * @returns {Q.Promise<unknown>|boolean}
        */
       submit() {
-        if (!this.cowsNumber || !this.startDate || !this.parcel) {
-          this.getFlash().append('Vous devez spécifiez un date de début, le nombre de vaches et une parcelle', 'error');
+        let error = false;
+        if (!this.cowsNumber) {
+          this.getFlash().append('Vous devez spécifiez un date de début', 'error');
+          error = true;
+        }
+        if (!this.startDate) {
+          this.getFlash().append('Vous devez spécifiez le nombre de vaches', 'error');
+          error = true;
+        }
+        if (!this.parcel) {
+          this.getFlash().append('Vous devez spécifiez une parcelle', 'error');
+          error = true;
+        }
+        if (!this.type) {
+          this.getFlash().append('Vous devez spécifiez un type de vaches', 'error');
+          error = true;
+        }
+
+        if (error) {
           return false;
         }
 
@@ -76,7 +103,8 @@
             'cows_number': this.cowsNumber,
             'start_date': this.startDate,
             'end_date': this.endDate,
-            'parcel_id': this.parcel
+            'parcel_id': this.parcel,
+            'type': this.type
           }),
           token: this.getToken()
         })
@@ -101,15 +129,23 @@
       this.testAndUpdateToken();
 
       if (process.client) {
+        const now = new Date();
+        this.startDate = now.toISOString();
+
         this.getApi().post('parcels/list', {
           infos: this.getJwtValues(),
           token: this.getToken()
         }).then(data => {
           this.updateTokenIfExist(data.token);
           this.parcels = data.parcels;
+        });
 
-          const now = new Date();
-          this.startDate = now.toISOString();
+        this.getApi().post('cows/list-types', {
+          infos: this.getJwtValues(),
+          token: this.getToken()
+        }).then(data => {
+          this.updateTokenIfExist(data.token);
+          this.types = data.types;
         });
       }
     }
