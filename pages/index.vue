@@ -12,6 +12,7 @@
                 <ul class="cxs-12">
                   <li>Nombre de vaches : {{cowInParcel.cow_number}}</li>
                   <li>Entrées dans la parcelle le : {{cowInParcel.formattedStartDate}}</li>
+                  <li>Type de vache : {{cowInParcel.formattedType}}</li>
                 </ul>
               </div>
             </div>
