@@ -146,6 +146,7 @@
         }).then(data => {
           this.updateTokenIfExist(data.token);
           this.types = data.types;
+          this.type = 'MILKING';
         });
       }
     }
