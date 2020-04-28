@@ -11,7 +11,8 @@
                             <ul class="cxs-12">
                                 <li>Surface : {{parcel.surface}} hectares</li>
                                 <li v-if="parcel.formattedLastDateWithCows">Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}}</li>
-                                <li v-else>Vaches dans la parcelle : {{parcel.cowsNumber}}</li>
+                                <li v-else-if="parcel.cowsNumber">Vaches dans la parcelle : {{parcel.cowsNumber}}</li>
+                                <li v-else>Jamais eu de vache dans la parcelle</li>
                             </ul>
                         </div>
                     </div>
