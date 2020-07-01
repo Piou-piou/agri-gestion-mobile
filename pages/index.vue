@@ -36,7 +36,8 @@
     data() {
       return {
         actualVersion: null,
-        cowsInParcel: null
+        cowsInParcel: null,
+        haytrackings: null
       }
     },
     mixins: [Utils],
@@ -72,6 +73,15 @@
         }).then(data => {
           this.updateTokenIfExist(data.token);
           this.cowsInParcel = data.cows_in_parcel;
+        });
+
+        this.getApi().post('haystacks/list', {
+          infos: this.getJwtValues(),
+          token: this.getToken()
+        }).then(data => {
+          console.log(data);
+          this.updateTokenIfExist(data.token);
+          this.haytrackings = data.haytrakings;
         });
       }
     }
