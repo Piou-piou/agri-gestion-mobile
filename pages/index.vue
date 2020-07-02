@@ -22,6 +22,30 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="cxs-12">
+          <h1 class="mb1">Suivi des Foins</h1>
+        </div>
+      </div>
+
+      <div class="row" v-for="haytracking in haytrackings" :key="haytracking.id">
+        <div class="cxs-12">
+          <div class="block">
+            <header>
+              <h5>Parcelle {{haytracking.parcel.name}}</h5>
+            </header>
+            <div class="content">
+              <div class="row">
+                <ul class="cxs-12">
+                  <li>Nombre de bottes : {{haytracking.haystack_number}}</li>
+                  <li>Type de fauche : {{haytracking.formattedHay}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <div id="app-version">V {{ actualVersion }}</div>
   </div>
@@ -80,8 +104,7 @@
           token: this.getToken()
         }).then(data => {
           console.log(data);
-          this.updateTokenIfExist(data.token);
-          this.haytrackings = data.haytrakings;
+          this.haytrackings = data.haytrackings;
         });
       }
     }
