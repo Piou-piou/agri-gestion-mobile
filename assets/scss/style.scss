@@ -16,3 +16,12 @@
 	right: 10px;
 	z-index: 5;
 }
+
+.float-button {
+    position: fixed;
+    right: 30px;
+    bottom: 75px;
+    border-radius: 50%;
+    padding: 1rem;
+    margin-right: 0;
+}

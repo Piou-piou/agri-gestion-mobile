@@ -43,7 +43,7 @@ export default {
      */
     getApi() {
       if (this.api === undefined) {
-        this.api = new RibsApi('https://agri-gestion.anthony-pilloud.fr/ribs-admin/agri-gestion/api/', 'external');
+        this.api = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/api/agri-gestion/', 'external');
       }
 
       return this.api;
@@ -55,7 +55,7 @@ export default {
      */
     getRibsAdminApi() {
       if (this.ribsAdminApi === undefined) {
-        this.ribsAdminApi = new RibsApi('https://agri-gestion.anthony-pilloud.fr/ribs-admin/api/', 'external');
+        this.ribsAdminApi = new RibsApi('http://agri-gestion-dev.anthony-pilloud.fr/ribs-admin/api/', 'external');
       }
 
       return this.ribsAdminApi;

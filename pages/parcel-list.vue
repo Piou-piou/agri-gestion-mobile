@@ -1,5 +1,7 @@
 <template>
     <main class="ribs-container-fluid">
+<!--        <div class="ribs-button float-button"><i class="fas fa-plus fa-2x"></i></div>-->
+
         <div class="row" v-for="parcel in parcels" :key="parcel.id">
             <div class="cxs-12">
                 <div class="block">
