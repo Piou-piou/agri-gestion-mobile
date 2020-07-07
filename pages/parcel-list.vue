@@ -14,9 +14,17 @@
                         <div class="row">
                             <ul class="cxs-12">
                                 <li>Surface : {{parcel.surface}} hectares</li>
-                                <li v-if="parcel.formattedLastDateWithCows">Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}}</li>
-                                <li v-else-if="parcel.cowsNumber">Vaches dans la parcelle : {{parcel.cowsNumber}}</li>
-                                <li v-else>Jamais eu de vache dans la parcelle</li>
+                                <li>Type : {{parcel.formatted_type}}</li>
+
+                                <li v-if="parcel.type == 'COWS' || parcel.type == 'BOTH'">
+                                    <span v-if="parcel.formattedLastDateWithCows">Pas eu de vache depuis le : {{parcel.formattedLastDateWithCows}}</span>
+                                    <span v-else-if="parcel.cowsNumber">Vaches dans la parcelle : {{parcel.cowsNumber}}</span>
+                                    <span v-else>Jamais eu de vache dans la parcelle</span>
+                                </li>
+
+                                <li v-if="parcel.hay_trackings && parcel.type == 'HAY' || parcel.type == 'BOTH'">
+                                    <div v-for="hay_tracking in parcel.hay_trackings">{{ hay_tracking }}</div>
+                                </li>
                             </ul>
                         </div>
                     </div>
