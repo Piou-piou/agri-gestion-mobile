@@ -1,6 +1,8 @@
 <template>
     <main class="ribs-container-fluid">
-<!--        <div class="ribs-button float-button"><i class="fas fa-plus fa-2x"></i></div>-->
+        <nuxt-link to="/add-parcel">
+            <div class="ribs-button float-button"><i class="fas fa-plus fa-2x"></i></div>
+        </nuxt-link>
 
         <div class="row" v-for="parcel in parcels" :key="parcel.id">
             <div class="cxs-12">

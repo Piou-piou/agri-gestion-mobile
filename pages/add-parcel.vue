@@ -6,22 +6,19 @@
                     <form action="" class="ribs-form content">
                         <div class="row">
                             <div class="form-group cxs-12">
-                                <label>Nombre de bottes</label>
-                                <input type="number" pattern="[0-9]*" name="haystack_number" class="form-control" v-model="haystackNumber">
+                                <label>Désignation</label>
+                                <input type="text" name="name" class="form-control" v-model="name">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group cxs-12">
-                                <label>Parcelle</label>
-                                <select v-model="parcel" class="form-control">
-                                    <option v-for="parcel in parcels" :key="parcel.id" v-bind:value="parcel.id">{{parcel.name}}
-                                    </option>
-                                </select>
+                                <label>Surface (en hectares)</label>
+                                <input type="number" pattern="[0-9]*" name="surface" class="form-control" v-model="surface">
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group cxs-12">
-                                <label>Type de fauche</label>
+                                <label>Type de parcelle</label>
                                 <select v-model="type" class="form-control">
                                     <option v-for="(type, index) in types" :key="type" v-bind:value="index">{{type}}</option>
                                 </select>
@@ -49,10 +46,10 @@
     data() {
       return {
         parcel: null,
-        parcels: null,
+        name: null,
+        surface: null,
         types: null,
         type: null,
-        haystackNumber: null,
       }
     },
     methods: {
@@ -61,16 +58,16 @@
        */
       submit() {
         let error = false;
-        if (!this.haystackNumber) {
-          this.getFlash().append('Vous devez spécifiez le nombre de bottes', 'error');
+        if (!this.name) {
+          this.getFlash().append('Vous devez spécifiez le nom de la parcelle', 'error');
           error = true;
         }
-        if (!this.parcel) {
-          this.getFlash().append('Vous devez spécifiez une parcelle', 'error');
+        if (!this.surface) {
+          this.getFlash().append('Vous devez spécifiez la surface de la parcelle', 'error');
           error = true;
         }
         if (!this.type) {
-          this.getFlash().append('Vous devez spécifiez un type de botte', 'error');
+          this.getFlash().append('Vous devez spécifiez un type de parcelle', 'error');
           error = true;
         }
 
@@ -78,10 +75,10 @@
           return false;
         }
 
-        return this.getApi().post('haystacks/add', {
+        return this.getApi().post('parcels/add', {
           infos: this.getJwtValues({
-            'haystack_number': this.haystackNumber,
-            'parcel_id': this.parcel,
+            'name': this.name,
+            'surface': this.surface,
             'type': this.type
           }),
           token: this.getToken()
@@ -90,7 +87,7 @@
           if (data.success === true) {
             this.setToken(data.token);
             this.getFlash().append(data.success_message, 'success');
-            this.$router.push('/');
+            this.$router.push('/parcel-list');
             return;
           } else {
             this.getFlash().append(data.error_message, 'error');
@@ -107,23 +104,12 @@
       this.testAndUpdateToken();
 
       if (process.client) {
-        const now = new Date();
-
-        this.getApi().post('parcels/list', {
-          infos: this.getJwtValues(),
-          token: this.getToken()
-        }).then(data => {
-          this.updateTokenIfExist(data.token);
-          this.parcels = data.parcels;
-        });
-
-        this.getApi().post('haystacks/list-types', {
+        this.getApi().post('parcels/list-types', {
           infos: this.getJwtValues(),
           token: this.getToken()
         }).then(data => {
           this.updateTokenIfExist(data.token);
           this.types = data.types;
-          this.type = 'HAY';
         });
       }
     }
