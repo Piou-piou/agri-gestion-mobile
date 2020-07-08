@@ -1,6 +1,6 @@
 <template>
     <main class="ribs-container-fluid">
-        <nuxt-link to="/add-parcel">
+        <nuxt-link to="/edit-parcel">
             <div class="ribs-button float-button"><i class="fas fa-plus fa-2x"></i></div>
         </nuxt-link>
 
@@ -28,6 +28,9 @@
                             </ul>
                         </div>
                     </div>
+                    <footer>
+                        <button class="ribs-button" @click="editParcel(parcel.id)">Modifier</button>
+                    </footer>
                 </div>
             </div>
         </div>
@@ -47,6 +50,10 @@
     },
     mixins: [Utils],
     methods: {
+      editParcel(id) {
+        localStorage.setItem('parcel_id', id);
+        this.$router.push('/edit-parcel');
+      }
     },
     created() {
       this.testAndUpdateToken();
@@ -60,6 +67,8 @@
           this.updateTokenIfExist(data.token);
           this.parcels = data.parcels;
         });
+
+        localStorage.removeItem('parcel_id');
       }
     }
   }

@@ -46,6 +46,7 @@
     data() {
       return {
         parcel: null,
+        id: null,
         name: null,
         surface: null,
         types: null,
@@ -75,8 +76,9 @@
           return false;
         }
 
-        return this.getApi().post('parcels/add', {
+        return this.getApi().post('parcels/edit', {
           infos: this.getJwtValues({
+            'id': this.id,
             'name': this.name,
             'surface': this.surface,
             'type': this.type
@@ -111,6 +113,22 @@
           this.updateTokenIfExist(data.token);
           this.types = data.types;
         });
+
+        if (localStorage.getItem('parcel_id')) {
+          this.getApi().post('parcels/show', {
+            infos: this.getJwtValues({id: localStorage.getItem('parcel_id')}),
+            token: this.getToken()
+          }).then(data => {
+            this.updateTokenIfExist(data.token);
+            if (data.success) {
+              this.parcel = data.parcel;
+              this.id = this.parcel.id;
+              this.name = this.parcel.name;
+              this.surface = this.parcel.surface;
+              this.type = this.parcel.type;
+            }
+          });
+        }
       }
     }
   }
