@@ -110,7 +110,7 @@
         const now = new Date();
 
         this.getApi().post('parcels/list', {
-          infos: this.getJwtValues(),
+          infos: this.getJwtValues({type: 'HAY'}),
           token: this.getToken()
         }).then(data => {
           this.updateTokenIfExist(data.token);
